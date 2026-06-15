@@ -1,36 +1,51 @@
-const targetOutput =
-document.getElementById("targetOutput");
+const targetOutput = document.getElementById("targetOutput");
+const statusText = document.getElementById("statusText");
+const imageInput = document.getElementById("imageInput");
+const targetSize = document.getElementById("targetSize");
+const resizeBtn = document.getElementById("resizeBtn");
+const result = document.getElementById("result");
+const originalSize = document.getElementById("originalSize");
+const newSize = document.getElementById("newSize");
+const preview = document.getElementById("preview");
+const downloadBtn = document.getElementById("downloadBtn");
 
-const statusText =
-document.getElementById("statusText");
+result.style.display = "none";
 
-const imageInput =
-document.getElementById("imageInput");
+resizeBtn.addEventListener("click", () => {
+  const file = imageInput.files[0];
 
-const targetSize =
-document.getElementById("targetSize");
+  if (!file) {
+    alert("Please select an image first.");
+    return;
+  }
 
-const resizeBtn =
-document.getElementById("resizeBtn");
+  const targetKB = parseInt(targetSize.value, 10);
 
-const result =
-document.getElementById("result");
+  if (!targetKB) {
+    alert("Target size not found.");
+    return;
+  }
 
-const originalSize =
-document.getElementById("originalSize");
+  originalSize.textContent = (file.size / 1024).toFixed(2) + " KB";
 
-const newSize =
-document.getElementById("newSize");
+  const reader = new FileReader();
 
-const preview =
-document.getElementById("preview");
+  reader.onload = function (event) {
+    const img = new Image();
 
-const downloadBtn =
-document.getElementById("downloadBtn");
+    img.onload = function () {
+      compressImageNearTarget(img, targetKB);
+    };
+
+    img.src = event.target.result;
+  };
+
+  reader.readAsDataURL(file);
+});
+
 function compressImageNearTarget(img, targetKB) {
-
-  let canvas = document.createElement("canvas");
-  let ctx = canvas.getContext("2d");
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
 
   let width = img.width;
   let height = img.height;
@@ -44,24 +59,16 @@ function compressImageNearTarget(img, targetKB) {
 
   canvas.width = width;
   canvas.height = height;
-
   ctx.drawImage(img, 0, 0, width, height);
 
   let low = 0.05;
   let high = 0.95;
-
   let bestOutput = null;
   let bestSize = 0;
 
-  for (let i = 0; i < 25; i++) {
-
+  for (let i = 0; i < 30; i++) {
     const quality = (low + high) / 2;
-
-    const output = canvas.toDataURL(
-      "image/jpeg",
-      quality
-    );
-
+    const output = canvas.toDataURL("image/jpeg", quality);
     const size = dataURLSize(output);
 
     if (size <= targetKB * 1024) {
@@ -71,32 +78,25 @@ function compressImageNearTarget(img, targetKB) {
     } else {
       high = quality;
     }
-
   }
 
   if (!bestOutput) {
-    alert(
-      "This image cannot be compressed to selected size. Try higher KB."
-    );
+    alert("This image cannot be compressed to selected size. Try higher KB.");
     return;
   }
 
   preview.src = bestOutput;
-
   downloadBtn.href = bestOutput;
+  downloadBtn.download = `resizekb-under-${targetKB}kb.jpg`;
 
-  downloadBtn.download =
-    `resizekb-under-${targetKB}kb.jpg`;
-
-  targetOutput.textContent =
-    `${targetKB} KB`;
-
-  newSize.textContent =
-    `${(bestSize / 1024).toFixed(2)} KB`;
-
-  statusText.textContent =
-    `✅ Successfully resized under ${targetKB}KB`;
+  targetOutput.textContent = `${targetKB} KB`;
+  newSize.textContent = `${(bestSize / 1024).toFixed(2)} KB`;
+  statusText.textContent = `✅ Successfully resized under ${targetKB}KB`;
 
   result.style.display = "block";
+}
 
+function dataURLSize(dataURL) {
+  const base64 = dataURL.split(",")[1];
+  return Math.round((base64.length * 3) / 4);
 }
