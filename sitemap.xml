@@ -1,56 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <url>
-    <loc>https://resizekb-cij.pages.dev/</loc>
-  </url>
-
-  <url>
-    <loc>https://resizekb-cij.pages.dev/about.html</loc>
-  </url>
-
-  <url>
-    <loc>https://resizekb-cij.pages.dev/contact.html</loc>
-  </url>
-
-  <url>
-    <loc>https://resizekb-cij.pages.dev/privacy-policy.html</loc>
-  </url>
-
-  <url>
-    <loc>https://resizekb-cij.pages.dev/resize-image-to-10kb.html</loc>
-  </url>
-
-  <url>
-    <loc>https://resizekb-cij.pages.dev/resize-image-to-20kb.html</loc>
-  </url>
-
-  <url>
-    <loc>https://resizekb-cij.pages.dev/resize-image-to-30kb.html</loc>
-  </url>
-
-  <url>
-    <loc>https://resizekb-cij.pages.dev/resize-image-to-40kb.html</loc>
-  </url>
-
-  <url>
-    <loc>https://resizekb-cij.pages.dev/resize-image-to-50kb.html</loc>
-  </url>
-
-  <url>
-    <loc>https://resizekb-cij.pages.dev/resize-image-to-100kb.html</loc>
-  </url>
-
-  <url>
-    <loc>https://resizekb-cij.pages.dev/resize-image-to-150kb.html</loc>
-  </url>
-
-  <url>
-    <loc>https://resizekb-cij.pages.dev/resize-image-to-200kb.html</loc>
-  </url>
-
-  <url>
-    <loc>https://resizekb-cij.pages.dev/resize-image-to-500kb.html</loc>
-  </url>
+  <url><loc>https://resizekb-cij.pages.dev/</loc></url>
+  <url><loc>https://resizekb-cij.pages.dev/about.html</loc></url>
+  <url><loc>https://resizekb-cij.pages.dev/contact.html</loc></url>
+  <url><loc>https://resizekb-cij.pages.dev/privacy-policy.html</loc></url>
+  <url><loc>https://resizekb-cij.pages.dev/resize-image-to-10kb.html</loc></url>
+  <url><loc>https://resizekb-cij.pages.dev/resize-image-to-20kb.html</loc></url>
+  <url><loc>https://resizekb-cij.pages.dev/resize-image-to-30kb.html</loc></url>
+  <url><loc>https://resizekb-cij.pages.dev/resize-image-to-40kb.html</loc></url>
+  <url><loc>https://resizekb-cij.pages.dev/resize-image-to-50kb.html</loc></url>
+  <url><loc>https://resizekb-cij.pages.dev/resize-image-to-100kb.html</loc></url>
+  <url><loc>https://resizekb-cij.pages.dev/resize-image-to-150kb.html</loc></url>
+  <url><loc>https://resizekb-cij.pages.dev/resize-image-to-200kb.html</loc></url>
+  <url><loc>https://resizekb-cij.pages.dev/resize-image-to-500kb.html</loc></url>
 
 </urlset>
